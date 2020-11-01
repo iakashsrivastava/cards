@@ -1,10 +1,9 @@
 import React from 'react'
+import styles from './../styles/Spinner.module.css';
 
-const Spinner= () => {
+const Spinner = () => {
     return (
-        <div>
-            Spinner
-        </div>
+        <div className={styles.loader}></div>
     )
 }
 

@@ -1,7 +1,8 @@
 import {CardType, QueryParametersType} from "./../utilities/Cards.type";
 import {MAX_HEIGHT_BEFORE_NEXT_API_CALL, MAX_RESULT_LIMIT} from "./../utilities/Cards.constant";
-import React, {Suspense, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 
+import Spinner from "./../components/Spinner.component.react";
 import { get } from "./../utilities/Api.helper";
 import styles from './../styles/Cards.module.css';
 
@@ -12,7 +13,8 @@ interface Props {
 }
 
 const Cards: React.FC<Props> = ({searchString}) => {
-    
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [cardsData, setCardsData] = useState<Array<CardType>>([]);
     const [triggerCardApi, setTriggerCardApi] = useState<boolean>(true);
     
@@ -48,6 +50,7 @@ const Cards: React.FC<Props> = ({searchString}) => {
     }
     
     const loadCards = async () =>{
+        setIsLoading(true);
         const queryParameters = {
             name: searchString,      
             page: Math.floor(cardsData.length/20)+1,
@@ -55,8 +58,9 @@ const Cards: React.FC<Props> = ({searchString}) => {
         }
         const {page, data} = await get(queryParameters);
         if(prevSearchString === searchString){
-            setCardsData(existingState => page ===1 ? data: [...existingState, ...data]);
+            setCardsData(existingState => page === 1 ? data: [...existingState, ...data]);
         }
+        setIsLoading(false);
     }
 
     return (
@@ -64,6 +68,7 @@ const Cards: React.FC<Props> = ({searchString}) => {
             {cardsData.map(cardData => 
                 <Card data={cardData} key={cardData.id}/>
             )}
+            {isLoading && <Spinner />}
         </div>
     )
 }
