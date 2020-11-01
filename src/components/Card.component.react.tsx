@@ -9,7 +9,7 @@ const Card: React.FC<Props> = ({data}) => {
     return (
         <figure className={styles.figureDetails}>
             <img src={data.imageUrl} className={styles.imageContainer}/>
-            <figcaption>Belle, based on 1770’s French court fashion</figcaption>
+            <figcaption>{data.name}</figcaption>
         </figure>
     )
 }

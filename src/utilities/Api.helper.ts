@@ -8,9 +8,16 @@ export const get = async (queryParameters: QueryParametersType) => {
       const queryParameterString = Object.entries(queryParameters).map(queryParameter => queryParameter.join('=')).join('&'); 
       const response = await fetch('https://api.elderscrollslegends.io/v1/cards'+`?${queryParameterString}`, requestOptions);
       const cardsData = await response.json();
-      output = cardsData.cards;
+      output = cardsData.cards.map((cardDataUntyped: any) =>({
+        id: cardDataUntyped.id ?? new Date(),
+        imageUrl: cardDataUntyped.imageUrl ?? null,
+        name: cardDataUntyped.name ?? 'Not Available',
+        text: cardDataUntyped.text ?? 'Not Available',
+        type: cardDataUntyped.type ?? 'Not Available',
+        setName: cardDataUntyped.set?.name ?? 'Not Available'
+    }));
   } catch{};
-  return output;
+  return {data: output, name: queryParameters.name};
 };
 
 // export const get = () => {
