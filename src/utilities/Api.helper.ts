@@ -17,7 +17,7 @@ export const get = async (queryParameters: QueryParametersType) => {
         setName: cardDataUntyped.set?.name ?? 'Not Available'
     }));
   } catch{};
-  return {data: output, name: queryParameters.name};
+  return {data: output, page: queryParameters.page};
 };
 
 // export const get = () => {

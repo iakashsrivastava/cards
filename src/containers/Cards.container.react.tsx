@@ -53,9 +53,9 @@ const Cards: React.FC<Props> = ({searchString}) => {
             page: Math.floor(cardsData.length/20)+1,
             pageSize: MAX_RESULT_LIMIT, 
         }
-        const {data, name} = await get(queryParameters);
-        if(name === searchString){
-            setCardsData(existingState => [...existingState, ...data]);
+        const {page, data} = await get(queryParameters);
+        if(prevSearchString === searchString){
+            setCardsData(existingState => page ===1 ? data: [...existingState, ...data]);
         }
     }
 
