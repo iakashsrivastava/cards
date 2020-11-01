@@ -49,7 +49,7 @@ const Cards: React.FC<Props> = ({searchString}) => {
         setTriggerCardApi(existingState => !existingState);
     }
     
-    const loadCards = async () =>{
+    const loadCards = async () => {
         setIsLoading(true);
         const queryParameters = {
             name: searchString,      
@@ -57,6 +57,7 @@ const Cards: React.FC<Props> = ({searchString}) => {
             pageSize: MAX_RESULT_LIMIT, 
         }
         const {page, data} = await get(queryParameters);
+        
         if(prevSearchString === searchString){
             setCardsData(existingState => page === 1 ? data: [...existingState, ...data]);
         }
