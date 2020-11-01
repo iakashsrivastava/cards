@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({data}) => {
-    console.log("data", data)
+    // console.log("data", data)
     return (
         <div className="card">
             <img className="card-img-top" src={data.imageUrl} alt="Card image cap" />
