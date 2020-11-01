@@ -1,23 +1,17 @@
 import React from 'react';
+import styles from './../styles/Cards.module.css';
 
 interface Props {
     data: any
 }
 
 const Card: React.FC<Props> = ({data}) => {
-    // console.log("data", data)
     return (
-        <div className="card">
-            <img className="card-img-top" src={data.imageUrl} alt="Card image cap" />
-            <div className="card-body">
-            <ul className="list-group list-group-flush">
-                <li className="list-group-item">Cras justo odio</li>
-                <li className="list-group-item">Dapibus ac facilisis in</li>
-                <li className="list-group-item">Vestibulum at eros</li>
-            </ul>
-            </div>
-        </div>
+        <figure className={styles.figureDetails}>
+            <img src={data.imageUrl} className={styles.imageContainer}/>
+            <figcaption>Belle, based on 1770’s French court fashion</figcaption>
+        </figure>
     )
 }
 
-export default Card
+export default Card;

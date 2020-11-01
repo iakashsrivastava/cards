@@ -3,6 +3,7 @@ import {MAX_HEIGHT_BEFORE_NEXT_API_CALL, MAX_RESULT_LIMIT} from "./../utilities/
 import React, {Suspense, useEffect, useRef, useState} from 'react';
 
 import { get } from "./../utilities/Api.helper";
+import styles from './../styles/Cards.module.css';
 
 const Card = React.lazy(() => import('./../components/Card.component.react'));
 
@@ -45,13 +46,13 @@ const Cards = () => {
 
     console.log("Total => ", cardsData.length);
     return (
-        <div className="row">
+        <div className={styles.columns}>
             {cardsData.map(cardData => 
-                <div className="col-xs-3 col-md-3" key={cardData.id}>
+                
                     <Suspense fallback={<></>}>
                         <Card data={cardData} />
                     </Suspense>
-                </div>
+              
             )}
         </div>
     )
