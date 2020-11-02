@@ -19,7 +19,7 @@ Tried to keep things simple and cover all the required functionality at minimum 
 
 Tried to include concepts such as functional components, hooks, code splitting, suspense, type checking.
 
-Addressed issues which can occur due to fast searching of cards.Application is bootstrapped using create-react-app and typescript.
+Addressed issues which can occur due to fast searching of cards.
 
 ### Known Issue
 
