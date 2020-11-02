@@ -1,7 +1,37 @@
 .headerContainer {
   overflow: hidden;
-  background-color: #333;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  background-color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40px;
+  padding: 5px;
+  width: 100%;
+}
+
+.searchText {
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+}
+
+.searchText:focus {
+  border: none;
+  outline: none;
+}
+
+.topContainer {
+  background-color: #f1f1f1;
+  height: 180px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  /* text-align: center; */
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }

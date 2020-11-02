@@ -1,6 +1,4 @@
-import {CardType, QueryParametersType} from "./../utilities/Cards.type";
-
-import {CardParametersLabelMappingEnum} from "./../utilities/Cards.constant";
+import {CardType} from "../utilities/cards.type";
 import React from 'react';
 import styles from './../styles/Cards.module.css';
 
@@ -9,13 +7,12 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({data}) => {
-    const keys = []
     return (
         <figure className={styles.figureDetails}>
             {
             (data.imageUrl != null)?
-                <img src={data.imageUrl} alt="No Image Available" className={styles.imageContainer}/>:
-                <img alt="No Image Available" className={styles.imageContainer}/>
+                <img src={data.imageUrl} alt="Not Available" className={styles.imageContainer}/>:
+                <img alt="Not Available" className={styles.imageContainer}/>
             }
             <figcaption>
                 <div>

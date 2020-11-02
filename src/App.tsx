@@ -8,13 +8,10 @@ const Header = React.lazy(() => import('./containers/Header.container.react'));
 function App() {
   const [searchString, setSearchString] = useState<string>('');
   return (
-    <div className="container">
       <Suspense fallback={<Spinner />}>
         <Header searchString={searchString} setSearchString={setSearchString}/>
         <Cards searchString={searchString}/>
-        
       </Suspense>
-  </div>
   );
 }
 

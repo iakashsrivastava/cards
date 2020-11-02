@@ -1,9 +1,9 @@
-import {CardType, QueryParametersType} from "./../utilities/Cards.type";
-import {MAX_HEIGHT_BEFORE_NEXT_API_CALL, MAX_RESULT_LIMIT} from "./../utilities/Cards.constant";
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
+import {CardType} from "../utilities/cards.type";
+import { MAX_RESULT_LIMIT } from "../utilities/cards.constant";
 import Spinner from "./../components/Spinner.component.react";
-import { get } from "./../utilities/Api.helper";
+import { get } from "../utilities/api.helper";
 import styles from './../styles/Cards.module.css';
 
 const Card = React.lazy(() => import('./../components/Card.component.react'));
@@ -65,11 +65,13 @@ const Cards: React.FC<Props> = ({searchString}) => {
     }
 
     return (
-        <div className={styles.columns}>
-            {cardsData.map(cardData => 
-                <Card data={cardData} key={cardData.id}/>
-            )}
-            {isLoading && <Spinner />}
+        <div className={styles.columnContainer}>
+            <div className={styles.columns}>
+                {isLoading && <Spinner />}
+                {cardsData.map(cardData => 
+                    <Card data={cardData} key={cardData.id}/>
+                )}
+            </div>
         </div>
     )
 }
