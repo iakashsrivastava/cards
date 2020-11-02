@@ -1,4 +1,4 @@
-The Project can be viwed at :- https://highspot-cards-grid.netlify.app/
+The Project can be viewed at :- https://highspot-cards-grid.netlify.app/
 
 # Getting Started with Create React App
 
