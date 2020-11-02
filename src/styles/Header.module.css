@@ -3,7 +3,9 @@
   background-color: #555;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
   height: 40px;
   padding: 5px;
   width: 100%;
@@ -27,11 +29,9 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  /* text-align: center; */
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+.codeLink {
+  padding-right: 25px;
+  color: white;
 }
