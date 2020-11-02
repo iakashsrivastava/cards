@@ -23,4 +23,4 @@ Addressed issues which can occur due to fast searching of cards.Application is b
 
 ### Known Issue
 
-CSS: Even though there might be some space available in the second last row, last cards can shifts to the bottom row.
+CSS: Even though there might be some space available in the second last row, last few cards can shift to the bottom row.
