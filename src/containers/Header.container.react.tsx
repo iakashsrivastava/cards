@@ -1,5 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
-
+import React from 'react';
 import styles from './../styles/Header.module.css';
 
 interface Props {
@@ -18,7 +17,13 @@ const Header: React.FC<Props> = ({searchString, setSearchString}) => {
                 type="text" 
                 value= {searchString} 
             />
-            <a href="https://github.com/iakashsrivastava/cards" target="_blank" className={styles.codeLink}>Github Code Link</a>
+            <a 
+                className={styles.codeLink}
+                href="https://github.com/iakashsrivastava/cards" 
+                rel="noreferrer"
+                target="_blank" >
+                    Github Code Link
+            </a>
         </div>
     )
 }
