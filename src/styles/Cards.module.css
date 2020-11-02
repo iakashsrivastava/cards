@@ -1,9 +1,10 @@
 .columns {
   column-width: 320px;
   column-gap: 1%;
-  width: 90%;
+  /* width: 90%; */
   max-width: 100%;
-  margin: 50px auto;
+  margin: 20px;
+  /* overflow-y: scroll; */
 }
 
 .figureDetails {
