@@ -1,12 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 
+import Card from './../components/Card.component.react';
 import {CardType} from "../utilities/cards.type";
 import { MAX_RESULT_LIMIT } from "../utilities/cards.constant";
 import Spinner from "./../components/Spinner.component.react";
 import { get } from "../utilities/api.helper";
 import styles from './../styles/Cards.module.css';
-
-const Card = React.lazy(() => import('./../components/Card.component.react'));
 
 interface Props {
     searchString: string,
@@ -38,6 +37,7 @@ const Cards: React.FC<Props> = ({searchString}) => {
     }, [triggerCardApi]);
 
     useEffect(() => {
+        // To avoid merge issues incase of fast typing in search box
         if(prevSearchString !== searchString){
             setCardsData([]);
             setTriggerCardApi(existingState => !existingState);
@@ -53,11 +53,11 @@ const Cards: React.FC<Props> = ({searchString}) => {
         setIsLoading(true);
         const queryParameters = {
             name: searchString,      
-            page: Math.floor(cardsData.length/20)+1,
+            page: Math.floor(cardsData.length/MAX_RESULT_LIMIT)+1,
             pageSize: MAX_RESULT_LIMIT, 
         }
         const {page, data} = await get(queryParameters);
-        
+        // Do not update stale results
         if(prevSearchString === searchString){
             setCardsData(existingState => page === 1 ? data: [...existingState, ...data]);
         }
